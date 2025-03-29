@@ -355,6 +355,12 @@ class EIS(Technique):
                                     **kwargs)
             Technique.__init__(self, text=self.tech.text, fileName=fileName)
             self.technique = 'EIS'
+        elif model_pstat == 'emstatpico':
+            self.tech = emstatpico.EIS(Eini, low_freq, high_freq, amplitude, sens, 
+                                     folder_save, fileName, header, path_lib, 
+                                     **kwargs)
+            Technique.__init__(self, text=self.tech.text, fileName=fileName)
+            self.technique = 'EIS'
         else:
             print('Potentiostat model ' + model_pstat + ' does not have EIS.')
 

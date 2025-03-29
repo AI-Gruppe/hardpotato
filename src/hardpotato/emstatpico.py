@@ -11,7 +11,7 @@ class Info:
         * Calculate dE, sr, dt, ttot, mins and max
     '''
     def __init__(self):
-        self.tech = ['CV', 'CA', 'LSV', 'OCP']
+        self.tech = ['CV', 'CA', 'LSV', 'OCP', 'EIS']
         self.options = [
                         'mode (low_speed, high_speed, max_range)',
                         ]
@@ -284,3 +284,12 @@ class OCP:
         #info.limits(dt, info.dt_min, info.dt_max, 'dt', 's')
         #info.limits(ttot, info.ttot_min, info.ttot_max, 'ttot', 's')
 
+
+class EIS:
+    '''
+        Pending:
+        * Validate parameters
+    '''
+    def __init__(self, Eini, low_freq, high_freq, amplitude, sens, folder, 
+                 fileName, header, path_lib, **kwargs):
+        self.text = ''
