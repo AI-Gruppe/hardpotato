@@ -116,6 +116,7 @@ class Technique:
                 dev.send_script(folder_save + '/' + self.fileName + '.mscr')
                 result = dev.readlines_until_end()
             self.data = mscript.parse_result_lines(result)
+            print('parsed')
             fileName = folder_save + '/' + self.fileName + '.txt'
             save = save_data.Save(self.data, fileName, self.header, model_pstat, 
                            self.technique, bpot=self.bpot)
@@ -346,7 +347,7 @@ class NPV(Technique):
 class EIS(Technique):
     '''
     '''
-    def __init__(self, Eini=0, low_freq=1, high_freq=1000, amplitude=0.01, 
+    def __init__(self, ch, Eini=0, low_freq=1, high_freq=1000, amplitude=0.01, 
                  sens=1e-6, fileName='EIS', header='EIS', **kwargs):
         self.header = header
         if model_pstat == 'chi760e':
@@ -356,7 +357,7 @@ class EIS(Technique):
             Technique.__init__(self, text=self.tech.text, fileName=fileName)
             self.technique = 'EIS'
         elif model_pstat == 'emstatpico':
-            self.tech = emstatpico.EIS(Eini, low_freq, high_freq, amplitude, sens, 
+            self.tech = emstatpico.EIS(Eini, ch, low_freq, high_freq, amplitude, sens, 
                                      folder_save, fileName, header, path_lib, 
                                      **kwargs)
             Technique.__init__(self, text=self.tech.text, fileName=fileName)

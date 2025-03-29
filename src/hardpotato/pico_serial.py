@@ -57,7 +57,7 @@ def _is_mscript_device(port):
     # - An EmStat4 device in bootloader mode would be identified as
     #   'EmStat4 Bootloader', but we only want to connect to devices
     #   that can run MethodSCRIPTs, so we do not include that here.
-    return (port.description == 'EmStat4' or
+    return (port.name.startswith('serial') or port.description == 'EmStat4' or
             port.description.startswith('ESPicoDev') or
             port.description.startswith('SensitBT') or
             port.description.startswith('SensitSmart') or
@@ -82,7 +82,7 @@ def auto_detect_port():
     """
     LOG.info('Auto-detecting serial communication port.')
     # Get the available ports.
-    ports = serial.tools.list_ports.comports(include_links=False)
+    ports = serial.tools.list_ports.comports(include_links=True)
     candidates = []
     for port in ports:
         LOG.debug('Found port: %s', port.description)
@@ -101,7 +101,7 @@ class Serial():
     """Serial communication interface for EmStat Pico."""
 
     def __init__(self, port, timeout):
-        self.connection = serial.Serial(port=None, baudrate=230400, timeout=timeout)
+        self.connection = serial.Serial(port='/dev/serial0', baudrate=230400, timeout=timeout)
         self.connection.port = port
 
     def __enter__(self):
