@@ -6,15 +6,15 @@ def readme():
 
 setup(
     name='hardpotato',
-    version='1.3.13',
-    description='Python API to control programmable potentiostats.',
+    version='1.3.13-post1',
+    description='Patched Python API to control programmable potentiostats.',
     long_description=readme(),
     long_description_content_type="text/markdown",
-    author='Oliver Rodriguez',
+    author='Oliver Rodriguez - patched by Odin Holmes',
     author_email='oliver.rdz@softpotato.xyz',
     packages=find_packages('src'),
     package_dir={'':'src'},
-    url='https://github.com/jrlLAB/hardpotato',
+    url='https://github.com/AI-Gruppe/hardpotato',
     keywords='Electrochemistry',
     install_requires=[
     'numpy',

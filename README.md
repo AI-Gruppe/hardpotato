@@ -1,3 +1,5 @@
+> This is a patched version of Hard Potato for the MSU emStat Pico
+
 # Hard Potato library
 Welcome to the hardpotato GitHub repository. Hard Potato is an open source Python
 API to control commercially available potentiostats. It enables researchers to
